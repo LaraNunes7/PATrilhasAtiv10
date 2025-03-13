@@ -1,0 +1,44 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private Button buttonRed;
+        private Button buttonBlue;
+
+        public Program()
+        {
+            buttonRed = new Button();
+            buttonRed.Text = "Vermelho";
+            buttonRed.Location = new Point(50, 50);
+            buttonRed.Click += new EventHandler(ButtonRed_Click);
+            this.Controls.Add(buttonRed);
+
+            buttonBlue = new Button();
+            buttonBlue.Text = "Azul";
+            buttonBlue.Location = new Point(150, 50);
+            buttonBlue.Click += new EventHandler(ButtonBlue_Click);
+            this.Controls.Add(buttonBlue);
+        }
+
+        private void ButtonRed_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Red;
+        }
+
+        private void ButtonBlue_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Blue;
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
