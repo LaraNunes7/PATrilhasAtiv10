@@ -1,0 +1,50 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private Label label;
+        private Button buttonIncrease;
+        private Button buttonDecrease;
+
+        public Program()
+        {
+            label = new Label();
+            label.Text = "Texto de Exemplo";
+            label.Location = new Point(50, 50);
+            this.Controls.Add(label);
+
+            buttonIncrease = new Button();
+            buttonIncrease.Text = "Aumentar Fonte";
+            buttonIncrease.Location = new Point(50, 100);
+            buttonIncrease.Click += new EventHandler(ButtonIncrease_Click);
+            this.Controls.Add(buttonIncrease);
+
+            buttonDecrease = new Button();
+            buttonDecrease.Text = "Diminuir Fonte";
+            buttonDecrease.Location = new Point(150, 100);
+            buttonDecrease.Click += new EventHandler(ButtonDecrease_Click);
+            this.Controls.Add(buttonDecrease);
+        }
+
+        private void ButtonIncrease_Click(object sender, EventArgs e)
+        {
+            label.Font = new Font(label.Font.FontFamily, label.Font.Size + 2);
+        }
+
+        private void ButtonDecrease_Click(object sender, EventArgs e)
+        {
+            label.Font = new Font(label.Font.FontFamily, label.Font.Size - 2);
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
