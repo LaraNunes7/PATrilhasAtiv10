@@ -1,0 +1,44 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private CheckBox checkBox;
+        private Button button;
+
+        public Program()
+        {
+            checkBox = new CheckBox();
+            checkBox.Text = "Marcar";
+            checkBox.Location = new Point(50, 50);
+            checkBox.CheckedChanged += new EventHandler(CheckBox_CheckedChanged);
+            this.Controls.Add(checkBox);
+
+            button = new Button();
+            button.Text = "Marcar";
+            button.Location = new Point(150, 50);
+            this.Controls.Add(button);
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox.Checked)
+            {
+                button.Text = "Desmarcar";
+            }
+            else
+            {
+                button.Text = "Marcar";
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
