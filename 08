@@ -1,0 +1,44 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private ListBox listBox;
+        private Button button;
+
+        public Program()
+        {
+            listBox = new ListBox();
+            listBox.Items.AddRange(new string[] { "Item 1", "Item 2", "Item 3" });
+            listBox.Location = new Point(50, 50);
+            this.Controls.Add(listBox);
+
+            button = new Button();
+            button.Text = "Exibir";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                MessageBox.Show(listBox.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Nenhum item selecionado!");
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
