@@ -1,0 +1,36 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private MonthCalendar monthCalendar;
+        private Button button;
+
+        public Program()
+        {
+            monthCalendar = new MonthCalendar();
+            monthCalendar.Location = new Point(50, 50);
+            this.Controls.Add(monthCalendar);
+
+            button = new Button();
+            button.Text = "Exibir Data";
+            button.Location = new Point(50, 200);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(monthCalendar.SelectionStart.ToShortDateString());
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
