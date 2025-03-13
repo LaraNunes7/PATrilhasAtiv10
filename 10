@@ -1,0 +1,36 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private DateTimePicker dateTimePicker;
+        private Button button;
+
+        public Program()
+        {
+            dateTimePicker = new DateTimePicker();
+            dateTimePicker.Location = new Point(50, 50);
+            this.Controls.Add(dateTimePicker);
+
+            button = new Button();
+            button.Text = "Exibir Data";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dateTimePicker.Value.ToShortDateString());
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
