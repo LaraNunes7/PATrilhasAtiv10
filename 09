@@ -1,0 +1,59 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private ProgressBar progressBar;
+        private Button button;
+        private Timer timer;
+        private int count;
+
+        public Program()
+        {
+            progressBar = new ProgressBar();
+            progressBar.Location = new Point(50, 50);
+            progressBar.Maximum = 10;
+            this.Controls.Add(progressBar);
+
+            button = new Button();
+            button.Text = "Iniciar";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+
+            timer = new Timer();
+            timer.Interval = 1000; // 1 segundo
+            timer.Tick += new EventHandler(Timer_Tick);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            count = 10;
+            progressBar.Value = 0;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (count > 0)
+            {
+                progressBar.Value++;
+                count--;
+            }
+            else
+            {
+                timer.Stop();
+                MessageBox.Show("Contagem regressiva concluída!");
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
