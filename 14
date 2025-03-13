@@ -1,0 +1,46 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private ComboBox comboBox;
+
+        public Program()
+        {
+            comboBox = new ComboBox();
+            comboBox.Items.AddRange(new string[] { "Vermelho", "Azul", "Verde", "Amarelo" });
+            comboBox.Location = new Point(50, 50);
+            comboBox.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);
+            this.Controls.Add(comboBox);
+        }
+
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox.SelectedItem.ToString())
+            {
+                case "Vermelho":
+                    this.BackColor = Color.Red;
+                    break;
+                case "Azul":
+                    this.BackColor = Color.Blue;
+                    break;
+                case "Verde":
+                    this.BackColor = Color.Green;
+                    break;
+                case "Amarelo":
+                    this.BackColor = Color.Yellow;
+                    break;
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
