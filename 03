@@ -1,0 +1,36 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private TextBox textBox;
+        private Button button;
+
+        public Program()
+        {
+            textBox = new TextBox();
+            textBox.Location = new Point(50, 50);
+            this.Controls.Add(textBox);
+
+            button = new Button();
+            button.Text = "Exibir";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(textBox.Text);
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
