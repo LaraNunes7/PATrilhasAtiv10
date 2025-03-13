@@ -1,0 +1,43 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private TextBox textBox;
+        private Button button;
+
+        public Program()
+        {
+            textBox = new TextBox();
+            textBox.Location = new Point(50, 50);
+            this.Controls.Add(textBox);
+
+            button = new Button();
+            button.Text = "Verificar";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                MessageBox.Show("Erro: O campo está vazio!");
+            }
+            else
+            {
+                MessageBox.Show("Sucesso: O campo não está vazio!");
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
