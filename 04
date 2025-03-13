@@ -1,0 +1,37 @@
+using System;
+using System.Windows.Forms;
+
+namespace Lista14
+{
+    public class Program : Form
+    {
+        private ComboBox comboBox;
+        private Button button;
+
+        public Program()
+        {
+            comboBox = new ComboBox();
+            comboBox.Items.AddRange(new string[] { "Opção 1", "Opção 2", "Opção 3" });
+            comboBox.Location = new Point(50, 50);
+            this.Controls.Add(comboBox);
+
+            button = new Button();
+            button.Text = "Exibir";
+            button.Location = new Point(150, 50);
+            button.Click += new EventHandler(Button_Click);
+            this.Controls.Add(button);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(comboBox.SelectedItem.ToString());
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+        }
+    }
+}
